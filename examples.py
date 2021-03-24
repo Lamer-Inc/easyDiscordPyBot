@@ -140,7 +140,7 @@ OWNER_ID = your_discord_id
 @client.command(name='spegnimento', help='Comando riservato')
 async def spegnimento(ctx):
   if ctx.author.id ==OWNER_ID:
-    await ctx.send('**Bot in spegnimento**...Bye bye. *Per riattivare il bot aprire il server e aggiornare i plugin necessari* (googletrans==3.1.0a0')
+    await ctx.send('**Bot in spegnimento**...Bye bye. *Per riattivare il bot aprire il server e aggiornare i plugin necessari* (googletrans==3.1.0a0)')
     await client.logout()
     await client.close()
   else:
@@ -198,7 +198,7 @@ async def wiki(ctx, *, args):
     await ctx.send(wikipedia.page(ricerca).title)
     await ctx.send(wikipedia.summary((ricerca), sentences=5))
 #semplice comando per fare ricerche su Wikipedia (restituisce il risultato in inglese essendo un modulo inglese)
-#è possibile far tradurre al bot il risultato automaticamente prima di inviarlo èrendendo spunto dal comando sopra
+#è possibile far tradurre al bot il risultato automaticamente prima di inviarlo prendendo spunto dal comando sopra
 
 #è molto semplice creare altri comandi anche vocali per permettere al bot di entrare in una vocale e riprodurre ad esempio musica. Questi sono solo semplici esempi di comandi
 #tutto è realizzabile leggendo i docs dei moduli utilizzati
