@@ -93,7 +93,7 @@ async def serverinfo(ctx):
 
     embed.set_thumbnail(url=icona)
     await ctx.send(embed=embed)
-#questo comando è molto particolare. Permette di ottenere informazioni riguardo al serverr in cui ci si trova. Per creare comandi simili basta guardare la documentazione ufficiale di Discord.py
+#questo comando è molto particolare. Permette di ottenere informazioni riguardo al server in cui ci si trova. Per creare comandi simili basta guardare la documentazione ufficiale di Discord.py
 #il comando sfrutta gli embed di Discord per dare la risposta (An Embed object is another component of Discord messages that can be used to present data with special formatting and structure.)
 
 
