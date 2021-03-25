@@ -6,7 +6,7 @@ Prima di tutto bisogna aprire il Discord developer portal a questo link:
 https://discord.com/developers/docs/intro
 Poi è necessario accedere al pannello di crezione di un'applicazione.
 Creando l'applicazione bisogna assegnare un nome e poi andare nella sezione bot e aggiungere un bot all'applicazione.
-Dopo aver creato un bot dovete salvare il token cliccando il testo: "Click to reveal token"
+Dopo aver creato un bot dovete salvare il token cliccando il testo: "Click to reveal token".
 Il token servirà poi all'interno del codice del bot.
 
 Potete leggere i docs di Discord.py per ulteriori info a questo link: https://discordpy.readthedocs.io/en/latest/discord.html
