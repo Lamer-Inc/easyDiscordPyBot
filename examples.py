@@ -192,6 +192,18 @@ async def meteo(ctx, *, args):
 #il risultato è in inglese ma fondendo all'interno il comando per la traduzione è possibile restituire il meteo già tradotto automaticamente dal bot
 
 
+@client.command(name='roll', help='Genera numeri casuali, utile per i server rp o le estrazioni')
+async def roll(ctx, *, args=None):
+    if args == None:
+        num = random.randint(1, 20)
+        await ctx.send(num)
+    else:
+        num1 = random.randint(1, int(args))
+        await ctx.send(num1)
+#comando per i server di role play. Permette di eseguire un'estrazione casuale da 1 a 20 se l'argomento non è specificato, o da 1 all'argomeno qualora sia presente
+#nulla da specificare, funzione molto basica che utilizza il modulo random per trovare un numero casuale fra i due limiti specificati
+
+
 @client.command(name='wiki', help='Fa una ricerca su Wikipedia')
 async def wiki(ctx, *, args):
     ricerca = str(args)
