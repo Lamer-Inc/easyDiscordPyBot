@@ -212,6 +212,21 @@ async def wiki(ctx, *, args):
 #semplice comando per fare ricerche su Wikipedia (restituisce il risultato in inglese essendo un modulo inglese)
 #è possibile far tradurre al bot il risultato automaticamente prima di inviarlo prendendo spunto dal comando sopra del meteo
 
+
+@client.event
+async def on_message_delete(message):
+    contenuto = message.content
+    autore = message.author
+    chat = message.channel.mention
+    embed = discord.Embed(title='**Messaggio eliminato**', color=discord.Color.blue())
+    embed.add_field(name='*Autore del messaggio*: ', value=autore)
+    embed.add_field(name='*Contenuto del messaggio*: ', value=contenuto)
+    embed.add_field(name='*Chat del messaggio*: ', value=chat)
+    channel = client.get_channel('id del canale da usare come log(senza le '')')
+    await channel.send(embed=embed)
+#comando per creare dei log del bot. Ogni volta che un messaggio viene scritto e eliminato mentre il bot è attivo, viene inviato un embed contenente le informazioni e il contenuto del messaggio eliminato
+#nella variabile channel bisogna assegnare l'id del canale in cui il bot salverà i log dei messaggi eliminati. Per trovare l'id del canale basta cliccare con il tasto destro del mouse sul nome del canale e selezionare copia id    
+
 #è molto semplice creare altri comandi anche vocali per permettere al bot di entrare in una vocale e riprodurre ad esempio musica. Questi sono solo semplici esempi di comandi
 #tutto è realizzabile leggendo i docs dei moduli utilizzati
 #ovviamente è necessario munirsi del proprio token per far funzionare il codice
