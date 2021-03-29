@@ -104,6 +104,8 @@ async def userinfo(ctx, member: discord.Member):
     embed.set_thumbnail(url=member.avatar_url)
 
     embed.add_field(name='Id', value=member.id)
+    data_creazione = "%a, %d %b %Y %I:%M %p"
+    embed.add_field(name='Account creation : ', value=member.created_at.strftime(data_creazione))
     embed.add_field(name='Is bot?', value=member.bot)
     roles = [role for role in member.roles]
     embed.add_field(name=f"Roles ({len(roles)})", value=" ".join([role.mention for role in roles]))
@@ -213,6 +215,19 @@ async def wiki(ctx, *, args):
 #è possibile far tradurre al bot il risultato automaticamente prima di inviarlo prendendo spunto dal comando sopra del meteo
 
 
+@client.command(name='set_log', help='Crea un canale per i log del bot')
+async def set_log(ctx):
+    if ctx.message.author.permissions_in(ctx.message.channel).manage_channels:
+        guild = ctx.guild
+        overwrites = {
+            guild.default_role: discord.PermissionOverwrite(read_messages=False)
+        }
+
+        channel = await guild.create_text_channel('bot-log', overwrites=overwrites)
+    else:
+        await ctx.send('Non hai i permessi necessari per usare questo comando')
+
+
 @client.event
 async def on_message_delete(message):
     contenuto = message.content
@@ -222,10 +237,10 @@ async def on_message_delete(message):
     embed.add_field(name='*Autore del messaggio*: ', value=autore)
     embed.add_field(name='*Contenuto del messaggio*: ', value=contenuto)
     embed.add_field(name='*Chat del messaggio*: ', value=chat)
-    channel = client.get_channel('id del canale da usare come log(senza le '')')
+    guild = message.guild
+    channel = get(guild.channels, name='bot-log')
     await channel.send(embed=embed)
-#comando per creare dei log del bot. Ogni volta che un messaggio viene scritto e eliminato mentre il bot è attivo, viene inviato un embed contenente le informazioni e il contenuto del messaggio eliminato
-#nella variabile channel bisogna assegnare l'id del canale in cui il bot salverà i log dei messaggi eliminati. Per trovare l'id del canale basta cliccare con il tasto destro del mouse sul nome del canale e selezionare copia id    
+#comando per creare dei log del bot. Ogni volta che un messaggio viene scritto e eliminato mentre il bot è attivo, viene inviato un embed contenente le informazioni e il contenuto del messaggio eliminato 
 
 #è molto semplice creare altri comandi anche vocali per permettere al bot di entrare in una vocale e riprodurre ad esempio musica. Questi sono solo semplici esempi di comandi
 #tutto è realizzabile leggendo i docs dei moduli utilizzati
