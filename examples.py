@@ -43,6 +43,19 @@ async def ping(ctx):
 #potete utilizzare il seguente link: https://discordpy.readthedocs.io/en/latest/index.html per imparare le basi di Discord.py
 
 
+@client.command(name='botinfo', help='Informazioni sul bot')
+async def botinfo(ctx):
+  disversion = discord.__version__
+  totalGuild = len(client.guilds)
+  embed = discord.Embed(title='**Informazioni sul bot**', color=discord.Color.blue())
+  embed.add_field(name='Versione discord.py in uso: ', value=disversion)
+  embed.add_field(name='Numero di server gestiti: ', value=totalGuild)
+  embed.add_field(name='Creatore del bot: ', value='Lamer-inc id')
+  embed.add_field(name='Codice del bot: ', value='https://github.com/Lamer-Inc/easyDiscordPyBot')
+  await ctx.send(embed=embed)
+#il bot restituisce alcune info di base; la versione di discord è estremamente semplice da ottenere. La variabile totalGuild restituisce il numero di server in cui si trova il bot   
+
+
 @client.command(name='kick', help='Espelli un membro')
 async def kick(ctx, member: discord.Member, *, reason=None):
     if (ctx.message.author.permissions_in(ctx.message.channel).kick_members):
