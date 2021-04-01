@@ -81,7 +81,7 @@ async def clean(ctx, amount=2):
         await ctx.channel.purge(limit=amount)
     else:
         await ctx.send('Non hai i permessi per usare questo comando')
-#il comando ban e il comando clear sono molto simili al comando kick. Variano principalmente i permessi ma la struttura è identica
+#il comando ban e il comando clean sono molto simili al comando kick. Variano principalmente i permessi ma la struttura è identica
 
 
 client.command(name='help_moderazione', help='Mostra informazioni per comandi di moderazione')
@@ -235,7 +235,7 @@ async def comandi(ctx):
     embed.add_field(name='**Moderazione**', value='Comandi per la gestione e la moderazione tramite bot', inline=False)
     embed.add_field(name='$kick [@user]', value='Espelle un membro dal server. (Necessita del kick permission)', inline=False)
     embed.add_field(name='$ban [@user]', value='Banna un membro dal server. (Necessita del ban permission)', inline=False)
-    embed.add_field(name='$clear [numero]', value='Cancella uno o più messaggi. (Necessita del manage messages)', inline=False)
+    embed.add_field(name='$clean [numero]', value='Cancella uno o più messaggi. (Necessita del manage messages)', inline=False)
     embed.add_field(name='$help_automoderatore', value='Mostra informazioni sulla funzione di automoderazione del bot', inline=False)
     embed.add_field(name='**Comandi utili**', value='Lista di comandi aggiuntivi e funzioni dettagliate', inline=False)
     embed.add_field(name='$botinfo', value='Restituisce informazioni generiche su un utente', inline=False)
