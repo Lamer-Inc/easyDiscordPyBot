@@ -75,7 +75,7 @@ async def ban(ctx, member: discord.Member, *, reason=None):
         await ctx.send('Non hai i permessi per usare questo comando')
 
 
-@client.command(name='clear', help='Cancella dei messaggi')
+@client.command(name='clean', help='Cancella dei messaggi')
 async def clear(ctx, amount=2):
     if (ctx.message.author.permissions_in(ctx.message.channel).manage_messages):
         await ctx.channel.purge(limit=amount)
@@ -86,7 +86,7 @@ async def clear(ctx, amount=2):
 
 client.command(name='help_moderazione', help='Mostra informazioni per comandi di moderazione')
 async def help_moderazione(ctx):
-  await ctx.send('**Ecco il pannello di aiuto per la moderazione**!\n Per bannare un utente digita $ban @user (funziona solo con il ban_permission).\n Per espellere un utente digita $kick @user (funziona solo con il kick permission).\n Per cancellare dei messaggi digita $clear numero (al posto di numero digita il numero di messaggi, funziona solo con il manage_messages). \n Digita $help_automoderatore per vedere informazioni riguardo alla funzione di automoderazione. \n Per warnare un utente digita $warn @user motivo (funziona solo con il manage_roles). \n Digita $userwarn @user per controllare i warn di un utente (funziona solo con il manage_roles).')
+  await ctx.send('**Ecco il pannello di aiuto per la moderazione**!\n Per bannare un utente digita $ban @user (funziona solo con il ban_permission).\n Per espellere un utente digita $kick @user (funziona solo con il kick permission).\n Per cancellare dei messaggi digita $clean numero (al posto di numero digita il numero di messaggi, funziona solo con il manage_messages). \n Digita $help_automoderatore per vedere informazioni riguardo alla funzione di automoderazione. \n Per warnare un utente digita $warn @user motivo (funziona solo con il manage_roles). \n Digita $userwarn @user per controllare i warn di un utente (funziona solo con il manage_roles).')
 
 
 @client.command(name='serverinfo', help='Info riguardanti il server')
