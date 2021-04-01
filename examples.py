@@ -76,7 +76,7 @@ async def ban(ctx, member: discord.Member, *, reason=None):
 
 
 @client.command(name='clean', help='Cancella dei messaggi')
-async def clear(ctx, amount=2):
+async def clean(ctx, amount=2):
     if (ctx.message.author.permissions_in(ctx.message.channel).manage_messages):
         await ctx.channel.purge(limit=amount)
     else:
