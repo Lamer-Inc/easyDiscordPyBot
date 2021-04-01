@@ -20,7 +20,7 @@ client = commands.Bot(command_prefix="$")
 #il prefisso rappresenta ciò che utilizzeremo per invocare il bot, è necessario salvare questo prefisso per interagire con i vari comandi
 token = 'SECRET'
 #il token è una stringa di lettere e numeri reperibili una volta creato il bot. Per creare un bot vai qui: https://discord.com/developers/applications e crea prima una nuova applicazione e poi il bot legato all'applicazione
-status = ['Digita $help per i comandi', 'Sto riposando']
+status = ['Digita $help per i comandi', 'Sto riposando', 'Digita $comandi per info']
 #status del bot; potete creare il vostro status personalizzato scrivendo ad esempio come raggiungere il comando di aiuto (che cambia ogni 15 secondi)
 
 
@@ -226,6 +226,35 @@ async def wiki(ctx, *, args):
     await ctx.send(wikipedia.summary((ricerca), sentences=5))
 #semplice comando per fare ricerche su Wikipedia (restituisce il risultato in inglese essendo un modulo inglese)
 #è possibile far tradurre al bot il risultato automaticamente prima di inviarlo prendendo spunto dal comando sopra del meteo
+
+
+@client.command(name='comandi', help='**Comando help principale**')
+async def comandi(ctx):
+    embed = discord.Embed(title='**Comandi e info sul bot**', color=discord.Color.green())
+    embed.add_field(name='Informazioni sui comandi principali del bot. Utilizzare $help per la lista completa', value='Ogni comando deve essere scritto ignorando le []; esempio $feedback 586202654087184384 Bel bot!')
+    embed.add_field(name='**Moderazione**', value='Comandi per la gestione e la moderazione tramite bot', inline=False)
+    embed.add_field(name='$kick [@user]', value='Espelle un membro dal server. (Necessita del kick permission)', inline=False)
+    embed.add_field(name='$ban [@user]', value='Banna un membro dal server. (Necessita del ban permission)', inline=False)
+    embed.add_field(name='$clear [numero]', value='Cancella uno o più messaggi. (Necessita del manage messages)', inline=False)
+    embed.add_field(name='$help_automoderatore', value='Mostra informazioni sulla funzione di automoderazione del bot', inline=False)
+    embed.add_field(name='**Comandi utili**', value='Lista di comandi aggiuntivi e funzioni dettagliate', inline=False)
+    embed.add_field(name='$botinfo', value='Restituisce informazioni generiche su un utente', inline=False)
+    embed.add_field(name='$userinfo [@user]', value='Restituisce informazioni su un utente specifico', inline=False)
+    embed.add_field(name='$serverinfo', value='Restituisce informazioni sul server in cui si esegue il comando', inline=False)
+    embed.add_field(name='$votazione [messaggio votazione]', value='Esegue una votazione tramite il bot e le reazioni (Manage messages richiesto)', inline=False)
+    embed.add_field(name='$translate [lang] [parola/frase]', value='Traduce una parola o una frase nella lingua scelta', inline=False)
+    embed.add_field(name='$wiki [ricerca]', value='Esegue una ricerca su Wikipedia', inline=False)
+    embed.add_field(name='$meteo [città]', value='Restituisce il meteo di una città in tempo reale', inline=False)
+    embed.add_field(name='$ticket', value='Crea un canale per parlare con gli amministratori del server', inline=False)
+    embed.add_field(name='$feedback [@user/id] [testo]', value='Invia un messaggio privato ad una persona tramite menzione o id', inline=False)
+    embed.add_field(name='**Log del bot**', value='Comandi per utilizzare il sistema di log integrato', inline=False)
+    embed.add_field(name='$set_log', value='Crea il canale in cui il bot invierà i log', inline=False)
+    embed.add_field(name='**Codice open source del bot**: ', value='https://github.com/Lamer-Inc/easyDiscordPyBot', inline=False)
+    embed.add_field(name='**Creatore del bot**: ', value='586202654087184384', inline=False)
+    embed.add_field(name='**Supporto**: ', value='https://discord.gg/tmk9G2QWEp', inline=False)
+    embed.add_field(name='**Informazioni su altri comandi**', value='Digita $help_altri_comandi, $aiuto_votazione, $help_moderazione, $calcolatrice per ulteriori informazioni', inline=False)
+    embed.add_field(name='**Bot sviluppato interamente in Python sfruttando discord.py da DiStRuTtOrE_Tm#6449**', value='ლ(╹◡╹ლ)', inline=False)
+    await ctx.send(embed=embed)
 
 
 @client.command(name='set_log', help='Crea un canale per i log del bot')
